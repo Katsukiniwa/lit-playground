@@ -26,7 +26,7 @@ let ToDoList = class ToDoList extends LitElement {
         const items = this.hideCompleted
             ? this._listItems.filter((item) => !item.completed)
             : this._listItems;
-        const todos = html ` <ul>
+        const todoList = html ` <ul>
       ${items.map((item) => html ` <li
             class=${item.completed ? 'completed' : ''}
             @click=${() => this.toggleCompleted(item)}
@@ -35,11 +35,11 @@ let ToDoList = class ToDoList extends LitElement {
           </li>`)}
     </ul>`;
         const caughtUpMessage = html ` <p>You're all caught up!</p> `;
-        const todosOrMessage = items.length > 0 ? todos : caughtUpMessage;
+        const toDoListOrMessage = items.length > 0 ? todoList : caughtUpMessage;
         return html `
       <h2>To Do</h2>
-      ${todosOrMessage}
-      <input id="newitem" aria-label="New item" />
+      ${toDoListOrMessage}
+      <input id="new-item" aria-label="New item" />
       <button @click=${this.addToDo}>Add</button>
       <br />
       <label>
